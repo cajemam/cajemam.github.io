@@ -31,7 +31,7 @@ body {
   padding: 10px 20px;
 }
 .header-search {
-  padding: 0px 15px;
+  padding-right: 30px;
 }
 .header-menu {
   display: flex;
