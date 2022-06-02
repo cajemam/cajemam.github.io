@@ -160,5 +160,6 @@ body {
 
 .blog-posts-post img {
     border-radius: 10px 10px 0px 0px;
+    max-width: 300px;
     width: 100%;
 }
