@@ -86,14 +86,14 @@ body {
 .header-menu-item::after {
   content: "";
   width: 100%;
-  border-bottom: 3px solid #171717;
+  border-bottom: 3px solid #fff;
 }
 
 .current {
   font-weight: 900;
 }
 .current::after {
-  border-color: #fff;
+  border-color: #171717;
 }
 
 .section-header {
