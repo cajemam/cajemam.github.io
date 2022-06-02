@@ -43,6 +43,7 @@ body {
 
   .header-menu {
     display: none;
+    flex-direction: column;
   }
   .header-search {
     display: none;
