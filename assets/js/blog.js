@@ -1,3 +1,5 @@
+var docTitle = document.title;
+
 var sonicSettings = {
 
     width: 100,
@@ -96,6 +98,7 @@ const viewPost = function(id){
     closebtn.onclick = function(){
         document.querySelector('.blog-view').remove();
         document.location.href = '#';
+        document.title = docTitle;
         this.remove();
     };
     a = new Sonic(sonicSettings);
@@ -120,6 +123,7 @@ const viewPost = function(id){
                 docContent.className = 'blog-view-content';
                 docImage.innerHTML = '<img src="'+data.data.preview+'"></img>';
                 docTitle.innerHTML = data.data.title;
+                document.title = data.data.title;
                 docContent.innerHTML = data.data.html;
                 postViewAreaInto.append(docImage);
                 postViewAreaInto.append(docTitle);
