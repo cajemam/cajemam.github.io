@@ -1,4 +1,4 @@
-let sonicSettings = {
+var sonicSettings = {
 
     width: 100,
     height: 100,
@@ -7,7 +7,7 @@ let sonicSettings = {
     trailLength: 1,
     pointDistance: .05,
 
-    strokeColor: '#005bc2',
+    strokeColor: '#000000',
 
     fps: 20,
 
@@ -75,3 +75,49 @@ $.ajax({
         console.log('Error - ' + errorMessage);
     }
 });
+
+const viewPost = function(id){
+    let postViewArea = document.createElement('div');
+    postViewArea.className = 'blog-view';
+    let postViewAreaInto = document.createElement('div');
+    postViewAreaInto.className = 'blog-view-into';
+    let closebtn = document.createElement('div');
+    closebtn.className = 'blog-into-close';
+    closebtn.innerHTML = '<img src="assets/images/arrow-back.png">';
+    closebtn.onclick = function(){
+        document.querySelector('.blog-view').remove();
+        this.remove();
+    };
+    a = new Sonic(sonicSettings);
+    postViewAreaInto.append(a.canvas);
+    postViewArea.append(closebtn);
+    postViewArea.append(postViewAreaInto);
+    document.body.append(postViewArea);
+    a.play();
+    $.ajax({
+        url: 'https://script.google.com/macros/s/AKfycbxWNyo-R9PIx4CkIRekDoROlZXM8fkeM2C5BmGj_s79yU6MZPYNIam0cwtWa2vr1km80A/exec?action=get_article_info&id=who-i-am',
+        type: 'get',
+        dataType: 'json',
+        success: function(returnData){
+            let data = (returnData);
+            if (data.status == 'success'){
+                postViewArea.innerHTML = '';
+                let docImage = document.createElement('div');
+                let docTitle = document.createElement('div');
+                let docContent = document.createElement('div');
+                docImage.innerHTML = '<img src="'+data.preview+'"></img>';
+                docTitle.innerHTML = data.title;
+                docContent.innerHTML = data.html;
+                postViewAreaInto.append(docImage);
+                postViewAreaInto.append(docTitle);
+                postViewAreaInto.append(docContent);
+            }else{
+                postViewAreaInto.innerText = data.msg;
+            }
+        },
+        error: function(xhr, status, error){
+            var errorMessage = xhr.status + ': ' + xhr.statusText
+            console.log('Error - ' + errorMessage);
+        }
+    });
+}
