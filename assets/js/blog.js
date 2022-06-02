@@ -16,7 +16,7 @@ $.ajax({
                 bdd.setAttribute('id', dd[d].id);
                 let bdtitle = document.createElement('div');
                 bdtitle.className = 'title';
-                bdtitle.innerHTMl = dd[d].title;
+                bdtitle.innerHTML = dd[d].title;
                 let bdimg = document.createElement('div');
                 bdimg.innerHTML = '<img src="'+dd[d].preview+'"></img>';
                 bdd.append(bdimg);
