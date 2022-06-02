@@ -65,6 +65,10 @@ $.ajax({
                 bdd.append(bdtitle);
                 bd.append(bdd);
                 bdy.append(bd);
+                bdd.onclick = function(){
+                    document.location.href = '#viewPost/'+dd[d].id;
+                    viewPost(document.location.href.split('#viewPost/')[1]);
+                }
             }
         }else{
             document.body.querySelector('.blog-posts').innerText = data.msg;
@@ -95,19 +99,19 @@ const viewPost = function(id){
     document.body.append(postViewArea);
     a.play();
     $.ajax({
-        url: 'https://script.google.com/macros/s/AKfycbxWNyo-R9PIx4CkIRekDoROlZXM8fkeM2C5BmGj_s79yU6MZPYNIam0cwtWa2vr1km80A/exec?action=get_article_info&id=who-i-am',
+        url: 'https://script.google.com/macros/s/AKfycbxWNyo-R9PIx4CkIRekDoROlZXM8fkeM2C5BmGj_s79yU6MZPYNIam0cwtWa2vr1km80A/exec?action=get_article_info&id='+encodeURIComponent(id),
         type: 'get',
         dataType: 'json',
         success: function(returnData){
             let data = (returnData);
             if (data.status == 'success'){
-                postViewArea.innerHTML = '';
+                postViewAreaInto.innerHTML = '';
                 let docImage = document.createElement('div');
                 let docTitle = document.createElement('div');
                 let docContent = document.createElement('div');
-                docImage.innerHTML = '<img src="'+data.preview+'"></img>';
-                docTitle.innerHTML = data.title;
-                docContent.innerHTML = data.html;
+                docImage.innerHTML = '<img src="'+data.data.preview+'"></img>';
+                docTitle.innerHTML = data.data.title;
+                docContent.innerHTML = data.data.html;
                 postViewAreaInto.append(docImage);
                 postViewAreaInto.append(docTitle);
                 postViewAreaInto.append(docContent);
@@ -120,4 +124,10 @@ const viewPost = function(id){
             console.log('Error - ' + errorMessage);
         }
     });
+}
+
+window.onload = function(){
+    if (document.location.href.split('#viewPost/').length > 1){
+        viewPost(document.location.href.split('#viewPost/')[1]);
+    }
 }
