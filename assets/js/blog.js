@@ -95,6 +95,7 @@ const viewPost = function(id){
     closebtn.innerHTML = '<img src="assets/images/arrow-back.png">';
     closebtn.onclick = function(){
         document.querySelector('.blog-view').remove();
+        document.location.href = '#';
         this.remove();
     };
     a = new Sonic(sonicSettings);
