@@ -61,6 +61,7 @@ body {
 
   .blog-posts > div{
     margin-bottom: 20px;
+    width: 100%;
   }
 }
 .header {
@@ -159,4 +160,5 @@ body {
 
 .blog-posts-post img {
     border-radius: 10px 10px 0px 0px;
+    width: 100%;
 }
