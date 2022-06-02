@@ -81,6 +81,11 @@ $.ajax({
 });
 
 const viewPost = function(id){
+    try{
+        document.body.querySelector('blog-view').remove();
+    }catch{
+        console.log('Everything good, all clear.');
+    }
     let postViewArea = document.createElement('div');
     postViewArea.className = 'blog-view';
     let postViewAreaInto = document.createElement('div');
@@ -107,8 +112,11 @@ const viewPost = function(id){
             if (data.status == 'success'){
                 postViewAreaInto.innerHTML = '';
                 let docImage = document.createElement('div');
+                docImage.className = 'blog-view-image';
                 let docTitle = document.createElement('div');
+                docTitle.className = 'blog-view-title';
                 let docContent = document.createElement('div');
+                docContent.className = 'blog-view-content';
                 docImage.innerHTML = '<img src="'+data.data.preview+'"></img>';
                 docTitle.innerHTML = data.data.title;
                 docContent.innerHTML = data.data.html;
