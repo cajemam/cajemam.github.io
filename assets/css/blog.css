@@ -75,6 +75,16 @@ body {
   align-items: center;
   padding: 10px 20px;
 }
+
+.blog-view-content p {
+  line-height: 1.5;
+}
+
+.blog-view-content li {
+  line-height: 1.5;
+  margin: 10px 0px;
+}
+
 .header-search {
   padding: 0px 15px;
 }
