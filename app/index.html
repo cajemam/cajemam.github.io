@@ -6,9 +6,14 @@
   </head>
   <body>
     <p>Sign In with google</p>
-    <button id="authorize-button" style="display: none;">Authorize</button>
-    <button id="signout-button" style="display: none;">Sign Out</button>
+    <button class="gitAuthBtn">Github</button>
+    <button class="googleAuthBtn">Google</button>
     <div id="content"></div>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-analytics.js";
+      import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+    </script>
     <script src="/assets/js/variables.app.js"></script>
     <script src="/assets/js/main.app.js"></script>
     <script src="/assets/js/auth.app.js"></script>

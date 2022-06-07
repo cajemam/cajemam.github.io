@@ -1,7 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-analytics.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
-
 const firebaseConfig = {
     apiKey: "AIzaSyDDiePq0IFWXflzwoSKpIEGCXCNCc1-DiE",
     authDomain: "cajemam-carente.firebaseapp.com",
@@ -17,7 +13,7 @@ const analytics = getAnalytics(app);
 
 const auth = getAuth();
 
-const signInWithGoogle = function() {
+document.querySelector('.googleAuthBtn').onclick  = function() {
     let provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
     .then((result) => {
@@ -34,7 +30,7 @@ const signInWithGoogle = function() {
     });
 }
 
-const signInWithGithub = function() {
+document.querySelector('.gitAuthBtn').onclick = function() {
     let provider = new GithubAuthProvider();
     provider.addScope('repo');
     signInWithPopup(auth, provider)
