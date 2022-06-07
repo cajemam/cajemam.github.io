@@ -13,6 +13,21 @@
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-analytics.js";
       import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+
+      const firebaseConfig = {
+          apiKey: "AIzaSyDDiePq0IFWXflzwoSKpIEGCXCNCc1-DiE",
+          authDomain: "cajemam-carente.firebaseapp.com",
+          projectId: "cajemam-carente",
+          storageBucket: "cajemam-carente.appspot.com",
+          messagingSenderId: "652369637774",
+          appId: "1:652369637774:web:995371886087d07a87b4df",
+          measurementId: "G-2HHSBJPGGT"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      const auth = getAuth();
     </script>
     <script src="/assets/js/variables.app.js"></script>
     <script src="/assets/js/main.app.js"></script>
