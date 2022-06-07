@@ -38,6 +38,9 @@
       const analytics = getAnalytics(app);
       import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
 
+      const provider = new GoogleAuthProvider();
+      provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+
       const auth = getAuth();
       signInWithPopup(auth, provider)
         .then((result) => {
