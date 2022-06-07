@@ -10,6 +10,10 @@
     <button class="googleAuthBtn">Google</button>
     <div id="content"></div>
     <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-analytics.js";
+      import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+
       const firebaseConfig = {
           apiKey: "AIzaSyDDiePq0IFWXflzwoSKpIEGCXCNCc1-DiE",
           authDomain: "cajemam-carente.firebaseapp.com",
@@ -24,10 +28,42 @@
       const analytics = getAnalytics(app);
 
       const auth = getAuth();
+
+      document.querySelector('.googleAuthBtn').onclick  = function() {
+          let provider = new GoogleAuthProvider();
+          signInWithPopup(auth, provider)
+          .then((result) => {
+              const credential = GoogleAuthProvider.credentialFromResult(result);
+              const token = credential.accessToken;
+              const user = result.user;
+              console.log(user);
+          }).catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              const email = error.customData.email;
+              const credential = GoogleAuthProvider.credentialFromError(error);
+              console.log(errorCode + '- ' + errorMessage, + ' - '+ email + " - " + credential);
+          });
+      }
+
+      document.querySelector('.gitAuthBtn').onclick = function() {
+          let provider = new GithubAuthProvider();
+          provider.addScope('repo');
+          signInWithPopup(auth, provider)
+          .then((result) => {
+              const credential = GithubAuthProvider.credentialFromResult(result);
+              const token = credential.accessToken;
+              const user = result.user;
+              console.log(user);
+          }).catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              const email = error.customData.email;
+              const credential = GithubAuthProvider.credentialFromError(error);
+              console.log(errorCode + '- ' + errorMessage, + ' - '+ email + " - " + credential);
+          });
+      }
     </script>
-    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase-auth.js"></script>
     <script src="/assets/js/variables.app.js"></script>
     <script src="/assets/js/main.app.js"></script>
     <script src="/assets/js/auth.app.js?v=1"></script>
