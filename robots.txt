@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /admin/
-Disallow: 
-Sitemap: https://cajemam.github.io/sitemap.xml
