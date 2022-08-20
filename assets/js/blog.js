@@ -1,4 +1,20 @@
 var docTitle = document.title;
+var url_rss = 'https://medium.com/feed/@cajemam.c';
+var rss_transformer = 'https://api.rss2json.com/v1/api.json?rss_url=';
+var rss_ready = rss_transformer+encodeURIComponent(url_rss);
+
+const get_char_symbols = function(sstring, number=1024){
+    let index = 0;
+    let strr = '';
+    for (let k in sstring){
+        if (index < number){
+            strr = strr + sstring[k];
+        }else{
+            return strr;
+        }
+        index += 1;
+    }
+}
 
 var sonicSettings = {
 
@@ -43,6 +59,37 @@ document.body.querySelector('.blog-posts').append(a.canvas);
 a.play();
 
 $.ajax({
+    url: rss_ready,
+    type: 'get',
+    dataType: 'json',
+    success: function(returnData){
+        let data = (returnData);
+        if (data.status == 'ok'){
+            let items = data.items;
+            let bdy = document.body.querySelector('.blog-posts');
+            bdy.innerHTML = '';
+            for (let i in items){
+                let bdy_item = document.createElement('div');
+                bdy_item.classList.add('blog-post');
+                let kElement = items[i];
+                bdy_item.innerHTML = '';
+                bdy_item.innerHTML += '<div class="blog-post-image">'+kElement.thumbnail+'</div>';
+                bdy_item.innerHTML += '<div class="blog-post-title">'+kElement.title+'</div>';
+                bdy_item.innerHTML += '<div class="blog-post-description">'+get_char_symbols(kElement.description, 1024)+'</div>';
+                bdy.append(bdy_item);
+            }
+        }else{
+            var errorMessage = xhr.status + ': ' + xhr.statusText
+            console.log('Error - ' + errorMessage);
+        }
+    },
+    error: function(xhr, status, error){
+        var errorMessage = xhr.status + ': ' + xhr.statusText
+        console.log('Error - ' + errorMessage);
+    }
+});
+
+/*$.ajax({
     url: 'https://script.google.com/macros/s/AKfycbxWNyo-R9PIx4CkIRekDoROlZXM8fkeM2C5BmGj_s79yU6MZPYNIam0cwtWa2vr1km80A/exec?action=get_all_articles',
     type: 'get',
     dataType: 'json',
@@ -81,6 +128,7 @@ $.ajax({
         console.log('Error - ' + errorMessage);
     }
 });
+*/
 
 const viewPost = function(id){
     try{
