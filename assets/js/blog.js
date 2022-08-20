@@ -73,9 +73,11 @@ $.ajax({
                 bdy_item.classList.add('blog-post');
                 let kElement = items[i];
                 bdy_item.innerHTML = '';
-                bdy_item.innerHTML += '<div class="blog-post-image">'+kElement.thumbnail+'</div>';
+                bdy_item.innerHTML += '<div class="blog-post-image"><img src="'+kElement.thumbnail+'" alt="Post '+kElement.title+'"/></div>';
                 bdy_item.innerHTML += '<div class="blog-post-title">'+kElement.title+'</div>';
-                bdy_item.innerHTML += '<div class="blog-post-description">'+get_char_symbols(kElement.description, 1024)+'</div>';
+                let dsText = document.createElement('div');
+                dsText.innerHTML = kElement.description;
+                bdy_item.innerHTML += '<div class="blog-post-description">'+get_char_symbols(dsText.innerText.split('</figure>')[1], 100)+'</div>';
                 bdy.append(bdy_item);
             }
         }else{
