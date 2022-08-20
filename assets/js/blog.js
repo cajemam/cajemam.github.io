@@ -77,6 +77,7 @@ $.ajax({
                 bdy_item.innerHTML += '<div class="blog-post-title">'+kElement.title+'</div>';
                 let dsText = document.createElement('div');
                 dsText.innerHTML = kElement.description;
+                console.log(dsText);
                 bdy_item.innerHTML += '<div class="blog-post-description">'+get_char_symbols(dsText.innerText.split('</figure>')[1], 100)+'</div>';
                 bdy.append(bdy_item);
             }
