@@ -190,6 +190,18 @@ const viewPost = function(id){
     });
 }
 
+let allinks = document.querySelectorAll('.jslink');
+for (let j in allinks){
+    let jslink = allinks[j];
+    try{
+        let alink = document.createElement('a');
+        alink.href = jslink.getAttribute('url');
+        alink.click();
+    }catch{
+        let yui = jslink;
+    }
+}
+
 window.onload = function(){
     if (document.location.href.split('#viewPost/').length > 1){
         viewPost(document.location.href.split('#viewPost/')[1]);
