@@ -82,3 +82,19 @@
         margin-top: 40px;
     }
 }
+
+.blog-post {
+    max-width: calc(100% / 4 - 20px);
+    & img {
+        max-width: 100%;
+    }
+    
+    &-title {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    &-description::after {
+        content: "...";
+    }
+}
