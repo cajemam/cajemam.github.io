@@ -72,8 +72,8 @@ $.ajax({
                 let bdy_item = document.createElement('div');
                 bdy_item.classList.add('blog-post');
                 bdy_item.classList.add('jslink');
-                bdy_item.setAttribute('url', kElement.link);
                 let kElement = items[i];
+                bdy_item.setAttribute('url', kElement.link);
                 bdy_item.innerHTML = '';
                 bdy_item.innerHTML += '<div class="blog-post-image"><img src="'+kElement.thumbnail+'" alt="Post '+kElement.title+'"/></div>';
                 bdy_item.innerHTML += '<div class="blog-post-title">'+kElement.title+'</div>';
