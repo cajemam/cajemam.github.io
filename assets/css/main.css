@@ -120,11 +120,6 @@ body {
   margin-top: 40px;
 }
 
-
-.blog-post {
-    max-width: calc(100% / 4 - 20px);
-}
-
 .blog-post img {
     max-width: 100%;
 }
