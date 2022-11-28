@@ -120,4 +120,87 @@ body {
   margin-top: 40px;
 }
 
+
+.blog-post {
+    max-width: calc(100% / 4 - 20px);
+}
+
+.blog-post img {
+    max-width: 100%;
+}
+
+.blog-post-title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.blog-post-description::after {
+    content: "...";
+}
+
+@media screen and (max-width: 600px) {
+    .blog-post {
+        max-width: calc(100% - 20px);
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 800px) {
+    .blog-post {
+        max-width: calc(100% / 2 - 20px);
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+    .blog-post {
+        max-width: calc(100% / 3 - 20px);
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+    .blog-post {
+        max-width: calc(100% / 3 - 20px);
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+    .blog-post {
+        max-width: calc(100% / 4 - 20px);
+    }
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1600px) {
+    .blog-post {
+        max-width: calc(100% / 5 - 20px);
+    }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1800px) {
+    .blog-post {
+        max-width: calc(100% / 6 - 20px);
+    }
+}
+
+@media screen and (min-width: 1800px) and (max-width: 2000px) {
+    .blog-post {
+        max-width: calc(100% / 7 - 20px);
+    }
+}
+
+@media screen and (min-width: 2000px) and (max-width: 2200px) {
+    .blog-post {
+        max-width: calc(100% / 8 - 20px);
+    }
+}
+
+@media screen and (min-width: 2200px) and (max-width: 2400px) {
+    .blog-post {
+        max-width: calc(100% / 9 - 20px);
+    }
+}
+
+@media screen and (min-width: 2400px) and (max-width: 2600px) {
+    .blog-post {
+        max-width: calc(100% / 10 - 20px);
+    }
+}
 /*# sourceMappingURL=main.css.map */
