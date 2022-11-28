@@ -71,6 +71,8 @@ $.ajax({
             for (let i in items){
                 let bdy_item = document.createElement('div');
                 bdy_item.classList.add('blog-post');
+                bdy_item.classList.add('jslink');
+                bdy_item.setAttribute('url', kElement.link);
                 let kElement = items[i];
                 bdy_item.innerHTML = '';
                 bdy_item.innerHTML += '<div class="blog-post-image"><img src="'+kElement.thumbnail+'" alt="Post '+kElement.title+'"/></div>';
@@ -80,6 +82,11 @@ $.ajax({
                 console.log(dsText.innerText);
                 bdy_item.innerHTML += '<div class="blog-post-description">'+get_char_symbols(dsText.innerText, 100)+'</div>';
                 bdy.append(bdy_item);
+                bdy_item.onlick = function(){
+                    let alink = document.createElement('a');
+                    alink.href = this.getAttribute('url');
+                    alink.click();
+                }
             }
         }else{
             var errorMessage = xhr.status + ': ' + xhr.statusText
@@ -188,18 +195,6 @@ const viewPost = function(id){
             console.log('Error - ' + errorMessage);
         }
     });
-}
-
-let allinks = document.querySelectorAll('.jslink');
-for (let j in allinks){
-    let jslink = allinks[j];
-    try{
-        let alink = document.createElement('a');
-        alink.href = jslink.getAttribute('url');
-        alink.click();
-    }catch{
-        let yui = jslink;
-    }
 }
 
 window.onload = function(){
