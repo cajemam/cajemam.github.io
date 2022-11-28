@@ -82,7 +82,7 @@ $.ajax({
                 console.log(dsText.innerText);
                 bdy_item.innerHTML += '<div class="blog-post-description">'+get_char_symbols(dsText.innerText, 100)+'</div>';
                 bdy.append(bdy_item);
-                bdy_item.onlick = function(){
+                bdy_item.onclick = function(){
                     let alink = document.createElement('a');
                     alink.href = this.getAttribute('url');
                     alink.click();
